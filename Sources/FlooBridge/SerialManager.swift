@@ -71,6 +71,7 @@ final class SerialManager: ObservableObject {
     func refreshPorts() {
         let ports = Self.discoverPorts()
         audioLoop.refreshOutputRouteIfNeeded()
+        syncAudioLoopStatus()
         let portsChanged = ports != lastDiscoveredPorts
         availablePorts = ports
         lastDiscoveredPorts = ports
@@ -433,16 +434,12 @@ final class SerialManager: ObservableObject {
         } else {
             stopAudioLoop()
         }
-        if microphonePermissionStatus == "Granted" || audioLoop.statusText != "Idle" {
-            audioLoopStatus = audioLoop.statusText
-        } else {
-            audioLoopStatus = "Mic permission: \(microphonePermissionStatus)"
-        }
+        syncAudioLoopStatus()
     }
 
     private func stopAudioLoop() {
         audioLoop.stopLoop()
-        audioLoopStatus = audioLoop.statusText
+        syncAudioLoopStatus()
     }
 
     private func updatePinPromptState(from line: String) {
@@ -681,6 +678,14 @@ final class SerialManager: ObservableObject {
         formatter.dateFormat = "HH:mm:ss"
         return formatter
     }()
+
+    private func syncAudioLoopStatus() {
+        if microphonePermissionStatus == "Granted" || audioLoop.statusText != "Idle" {
+            audioLoopStatus = audioLoop.statusText
+        } else {
+            audioLoopStatus = "Mic permission: \(microphonePermissionStatus)"
+        }
+    }
 
     private func applySavedPinsToBroadcasts() {
         guard !broadcasts.isEmpty else { return }
