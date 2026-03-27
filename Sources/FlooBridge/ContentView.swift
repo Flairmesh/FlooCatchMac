@@ -128,6 +128,9 @@ struct ContentView: View {
                         if broadcast.encrypted {
                             lockStatusChip(color: .orange)
                         }
+                        if broadcast.pin != nil {
+                            rememberedPinChip(color: .teal)
+                        }
                         if broadcast.isSyncing {
                             statusChip(L10n.t("sync"), color: .blue)
                         }
@@ -501,6 +504,16 @@ private func lockStatusChip(color: Color) -> some View {
         .padding(.vertical, 6)
         .background(color.opacity(0.18), in: Capsule())
         .foregroundStyle(color)
+}
+
+private func rememberedPinChip(color: Color) -> some View {
+    Image(systemName: "key.fill")
+        .font(.caption.weight(.semibold))
+        .padding(.horizontal, 9)
+        .padding(.vertical, 6)
+        .background(color.opacity(0.18), in: Capsule())
+        .foregroundStyle(color)
+        .help("Saved PIN available")
 }
 
 @ViewBuilder

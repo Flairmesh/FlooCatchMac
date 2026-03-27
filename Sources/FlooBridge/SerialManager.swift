@@ -6,6 +6,7 @@ import AVFoundation
 @MainActor
 final class SerialManager: ObservableObject {
     private static let preferredPortToken = "FMA120"
+    private static let savedPinsDefaultsKey = "SavedBroadcastPins"
 
     @Published var availablePorts: [String] = []
     @Published var selectedPort: String?
@@ -44,6 +45,7 @@ final class SerialManager: ObservableObject {
     private var isTerminating = false
     private var nextPinPromptID = 1
     private var lastPinPromptSignature: String?
+    private var lastAutoSubmittedPinSignature: String?
 
     private lazy var worker = SerialWorker { [weak self] event in
         Task { @MainActor [weak self] in
@@ -271,6 +273,9 @@ final class SerialManager: ObservableObject {
     func submitPinCode(_ pin: String) {
         let trimmed = pin.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return }
+        if let broadcastID = pinPromptContext?.broadcastId {
+            savePin(trimmed, for: broadcastID)
+        }
         sendLine("BE=01,\(trimmed)")
     }
 
@@ -317,6 +322,7 @@ final class SerialManager: ObservableObject {
     func resetParsedState() {
         parser.reset()
         broadcasts = parser.broadcasts
+        applySavedPinsToBroadcasts()
         selectedBroadcastID = nil
         receiverState = parser.receiverState
         lastBAStatus = parser.lastBAStatus
@@ -324,12 +330,14 @@ final class SerialManager: ObservableObject {
         autoScanRequested = false
         dismissPinPrompt()
         lastPinPromptSignature = nil
+        lastAutoSubmittedPinSignature = nil
         stopAudioLoop()
     }
 
     private func clearDiscoveredBroadcasts() {
         parser.clearBroadcasts()
         broadcasts = parser.broadcasts
+        applySavedPinsToBroadcasts()
         if let selectedBroadcastID, !broadcasts.contains(where: { $0.id == selectedBroadcastID }) {
             self.selectedBroadcastID = nil
         }
@@ -375,6 +383,7 @@ final class SerialManager: ObservableObject {
             handleProtocolErrorIfNeeded(text)
             parser.process(line: text)
             broadcasts = parser.broadcasts
+            applySavedPinsToBroadcasts()
             if let selectedBroadcastID, !broadcasts.contains(where: { $0.id == selectedBroadcastID }) {
                 self.selectedBroadcastID = nil
             }
@@ -449,11 +458,21 @@ final class SerialManager: ObservableObject {
             if status.encryptionState == 2 || status.bisSync != 0 || status.paSync == 0 {
                 dismissPinPrompt()
                 lastPinPromptSignature = nil
+                lastAutoSubmittedPinSignature = nil
             }
             return
         }
 
         let signature = "\(status.broadcastId)|\(status.sourceId)|\(status.encryptionState)|\(status.bisSync)|\(line)"
+        if let savedPin = savedPin(for: status.broadcastId),
+           lastAutoSubmittedPinSignature != signature {
+            lastAutoSubmittedPinSignature = signature
+            dismissPinPrompt()
+            appendLog("Using saved PIN for broadcast \(status.broadcastId)")
+            sendLine("BE=01,\(savedPin)")
+            return
+        }
+
         guard lastPinPromptSignature != signature else { return }
         lastPinPromptSignature = signature
 
@@ -662,6 +681,32 @@ final class SerialManager: ObservableObject {
         formatter.dateFormat = "HH:mm:ss"
         return formatter
     }()
+
+    private func applySavedPinsToBroadcasts() {
+        guard !broadcasts.isEmpty else { return }
+        let pins = savedPins()
+        for index in broadcasts.indices {
+            broadcasts[index].pin = pins[broadcasts[index].broadcastId]
+        }
+    }
+
+    private func savedPin(for broadcastID: String) -> String? {
+        savedPins()[broadcastID]
+    }
+
+    private func savePin(_ pin: String, for broadcastID: String) {
+        var pins = savedPins()
+        pins[broadcastID] = pin
+        UserDefaults.standard.set(pins, forKey: Self.savedPinsDefaultsKey)
+        if let index = broadcasts.firstIndex(where: { $0.broadcastId == broadcastID }) {
+            broadcasts[index].pin = pin
+        }
+        appendLog("Saved PIN for broadcast \(broadcastID)")
+    }
+
+    private func savedPins() -> [String: String] {
+        UserDefaults.standard.dictionary(forKey: Self.savedPinsDefaultsKey) as? [String: String] ?? [:]
+    }
 }
 
 extension SerialManager {
