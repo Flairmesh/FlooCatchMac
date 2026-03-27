@@ -1,0 +1,333 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A10000000000000000000001 /* AnnouncementIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000001 /* AnnouncementIcon.swift */; };
+		A10000000000000000000002 /* AudioLoopManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000002 /* AudioLoopManager.swift */; };
+		A10000000000000000000003 /* AuracastModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000003 /* AuracastModels.swift */; };
+		A10000000000000000000004 /* AuracastParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000004 /* AuracastParser.swift */; };
+		A10000000000000000000005 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000005 /* ContentView.swift */; };
+		A10000000000000000000006 /* FlooBridgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000006 /* FlooBridgeApp.swift */; };
+		A10000000000000000000007 /* SerialManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000007 /* SerialManager.swift */; };
+		A10000000000000000000008 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000008 /* SettingsView.swift */; };
+		A10000000000000000000009 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000A /* AppKit.framework */; };
+		A1000000000000000000000A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000B /* AVFoundation.framework */; };
+		A1000000000000000000000B /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000C /* CoreAudio.framework */; };
+		A1000000000000000000000C /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000D /* IOKit.framework */; };
+		A1000000000000000000000D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000E /* SwiftUI.framework */; };
+		A1000000000000000000000E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000010 /* Assets.xcassets */; };
+		A1000000000000000000000F /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000011 /* Localization.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A20000000000000000000001 /* AnnouncementIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnnouncementIcon.swift; path = Sources/FlooBridge/AnnouncementIcon.swift; sourceTree = SOURCE_ROOT; };
+		A20000000000000000000002 /* AudioLoopManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AudioLoopManager.swift; path = Sources/FlooBridge/AudioLoopManager.swift; sourceTree = SOURCE_ROOT; };
+		A20000000000000000000003 /* AuracastModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuracastModels.swift; path = Sources/FlooBridge/AuracastModels.swift; sourceTree = SOURCE_ROOT; };
+		A20000000000000000000004 /* AuracastParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuracastParser.swift; path = Sources/FlooBridge/AuracastParser.swift; sourceTree = SOURCE_ROOT; };
+		A20000000000000000000005 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = Sources/FlooBridge/ContentView.swift; sourceTree = SOURCE_ROOT; };
+		A20000000000000000000006 /* FlooBridgeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FlooBridgeApp.swift; path = Sources/FlooBridge/FlooBridgeApp.swift; sourceTree = SOURCE_ROOT; };
+		A20000000000000000000007 /* SerialManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SerialManager.swift; path = Sources/FlooBridge/SerialManager.swift; sourceTree = SOURCE_ROOT; };
+		A20000000000000000000008 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = Sources/FlooBridge/SettingsView.swift; sourceTree = SOURCE_ROOT; };
+		A20000000000000000000009 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Support/Info.plist; sourceTree = SOURCE_ROOT; };
+		A2000000000000000000000A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		A2000000000000000000000B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A2000000000000000000000C /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		A2000000000000000000000D /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		A2000000000000000000000E /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		A2000000000000000000000F /* FlooCatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlooCatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A20000000000000000000010 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		A20000000000000000000011 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Localization.swift; path = Sources/FlooBridge/Localization.swift; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A30000000000000000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10000000000000000000009 /* AppKit.framework in Frameworks */,
+				A1000000000000000000000A /* AVFoundation.framework in Frameworks */,
+				A1000000000000000000000B /* CoreAudio.framework in Frameworks */,
+				A1000000000000000000000C /* IOKit.framework in Frameworks */,
+				A1000000000000000000000D /* SwiftUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A40000000000000000000001 = {
+			isa = PBXGroup;
+			children = (
+				A40000000000000000000002 /* FlooAuracastReceiver */,
+				A40000000000000000000003 /* Frameworks */,
+				A40000000000000000000004 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A40000000000000000000002 /* FlooAuracastReceiver */ = {
+			isa = PBXGroup;
+			children = (
+				A20000000000000000000010 /* Assets.xcassets */,
+				A40000000000000000000005 /* Sources */,
+				A40000000000000000000006 /* Support */,
+			);
+			path = FlooAuracastReceiver;
+			sourceTree = "<group>";
+		};
+		A40000000000000000000003 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A2000000000000000000000A /* AppKit.framework */,
+				A2000000000000000000000B /* AVFoundation.framework */,
+				A2000000000000000000000C /* CoreAudio.framework */,
+				A2000000000000000000000D /* IOKit.framework */,
+				A2000000000000000000000E /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A40000000000000000000004 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A2000000000000000000000F /* FlooCatch.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A40000000000000000000005 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				A20000000000000000000001 /* AnnouncementIcon.swift */,
+				A20000000000000000000002 /* AudioLoopManager.swift */,
+				A20000000000000000000003 /* AuracastModels.swift */,
+				A20000000000000000000004 /* AuracastParser.swift */,
+				A20000000000000000000005 /* ContentView.swift */,
+				A20000000000000000000006 /* FlooBridgeApp.swift */,
+				A20000000000000000000007 /* SerialManager.swift */,
+				A20000000000000000000008 /* SettingsView.swift */,
+				A20000000000000000000011 /* Localization.swift */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		A40000000000000000000006 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				A20000000000000000000009 /* Info.plist */,
+			);
+			name = Support;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A50000000000000000000001 /* FlooAuracastReceiver */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A60000000000000000000001 /* Build configuration list for PBXNativeTarget "FlooAuracastReceiver" */;
+			buildPhases = (
+				A30000000000000000000002 /* Sources */,
+				A30000000000000000000001 /* Frameworks */,
+				A30000000000000000000003 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FlooAuracastReceiver;
+			packageProductDependencies = (
+			);
+			productName = FlooCatch;
+			productReference = A2000000000000000000000F /* FlooCatch.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A70000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2600;
+				LastUpgradeCheck = 2600;
+				TargetAttributes = {
+					A50000000000000000000001 = {
+						CreatedOnToolsVersion = 26.4;
+					};
+				};
+			};
+			buildConfigurationList = A60000000000000000000002 /* Build configuration list for PBXProject "FlooAuracastReceiver" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A40000000000000000000001;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = A40000000000000000000004 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A50000000000000000000001 /* FlooAuracastReceiver */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A30000000000000000000003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1000000000000000000000E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A30000000000000000000002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10000000000000000000001 /* AnnouncementIcon.swift in Sources */,
+				A10000000000000000000002 /* AudioLoopManager.swift in Sources */,
+				A10000000000000000000003 /* AuracastModels.swift in Sources */,
+				A10000000000000000000004 /* AuracastParser.swift in Sources */,
+				A10000000000000000000005 /* ContentView.swift in Sources */,
+				A10000000000000000000006 /* FlooBridgeApp.swift in Sources */,
+				A10000000000000000000007 /* SerialManager.swift in Sources */,
+				A10000000000000000000008 /* SettingsView.swift in Sources */,
+				A1000000000000000000000F /* Localization.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A80000000000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A80000000000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		A80000000000000000000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Support/FlooCatch.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8433FP4A3U;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Support/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.flairmesh.floocatch;
+				PRODUCT_NAME = FlooCatch;
+				REGISTER_APP_GROUPS = NO;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A80000000000000000000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Developer ID Application: RADIOWORKS MICROELECTRONICS PTY LTD (8433FP4A3U)";
+				CODE_SIGN_ENTITLEMENTS = Support/FlooCatch.entitlements;
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8433FP4A3U;
+				ENABLE_DEBUG_DYLIB = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Support/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0;
+				OTHER_CODE_SIGN_FLAGS = "--timestamp";
+				PRODUCT_BUNDLE_IDENTIFIER = com.flairmesh.floocatch;
+				PRODUCT_NAME = FlooCatch;
+				REGISTER_APP_GROUPS = NO;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A60000000000000000000001 /* Build configuration list for PBXNativeTarget "FlooAuracastReceiver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A80000000000000000000003 /* Debug */,
+				A80000000000000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A60000000000000000000002 /* Build configuration list for PBXProject "FlooAuracastReceiver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A80000000000000000000001 /* Debug */,
+				A80000000000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A70000000000000000000001 /* Project object */;
+}
