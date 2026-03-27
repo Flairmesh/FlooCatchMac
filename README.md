@@ -1,29 +1,38 @@
 # FlooCatchMac
 
-FlooCatch is a macOS Auracast receiver app for the FlooGoo FMA120 receiver hardware.
+FlooCatchMac is the macOS receiver app for the FlooGoo FMA120 Auracast receiver.
 
-It provides:
-- automatic USB CDC discovery for supported FMA120 devices
-- broadcast scanning and sync controls
-- audio loopback to the selected macOS output device
-- encrypted broadcast PIN entry
-- localized end-user UI
-- notarized macOS release packaging
+It is designed for end users who want to discover broadcasts, tune in, enter PIN codes for encrypted streams, and listen through a selected macOS output device.
 
-## Project Layout
+## Features
+
+- automatic discovery of supported FMA120 USB CDC devices
+- Auracast broadcast scanning and selection
+- sync and stream control for open and encrypted broadcasts
+- PIN entry flow for encrypted broadcasts
+- audio playback routed to the selected macOS output
+- localized UI for a broad set of languages
+- Developer ID signing and notarized release packaging
+
+## Requirements
+
+- macOS 13.0 or later
+- FlooGoo FMA120 receiver hardware
+
+## Repository Layout
 
 - `Sources/`
-  Swift source for the macOS app
+  Swift sources for the macOS app
 - `Assets.xcassets/`
   app icon, logo, and UI assets
 - `Support/`
   plist, entitlements, and release support files
 - `scripts/`
-  release and notarization helpers
+  build and notarization helpers
 
 ## Build
 
-Open:
+Open the project in Xcode:
 
 - `FlooAuracastReceiver.xcodeproj`
 
@@ -37,6 +46,16 @@ xcodebuild \
   -destination "generic/platform=macOS" \
   build
 ```
+
+## Notarized Release
+
+Release notarization instructions are documented in:
+
+- `Support/NOTARIZATION.md`
+
+## Support
+
+- [Flairmesh Receiver Support](https://www.flairmesh.com/Dongle/FMA120.html#receiver)
 
 ## License
 
