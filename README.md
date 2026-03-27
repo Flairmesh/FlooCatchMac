@@ -53,6 +53,33 @@ Release notarization instructions are documented in:
 
 - `Support/NOTARIZATION.md`
 
+## Screenshots
+
+Add repository screenshots under:
+
+- `docs/screenshots/`
+
+Suggested images:
+
+- `main-window.png`
+- `expert-panel.png`
+- `pin-entry.png`
+
+Then embed them here, for example:
+
+```md
+![Main Window](docs/screenshots/main-window.png)
+```
+
+This keeps the repository ready for public presentation without forcing placeholder images into the first commit.
+
+## Releases
+
+- `CHANGELOG.md`
+  project history
+- `RELEASE_NOTES_v1.0.0.md`
+  first public release notes
+
 ## Support
 
 - [Flairmesh Receiver Support](https://www.flairmesh.com/Dongle/FMA120.html#receiver)
