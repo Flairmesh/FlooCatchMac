@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var serial: SerialManager
+    @Environment(\.colorScheme) private var colorScheme
     @State private var showExpertPanel = false
     @State private var commandText = "BA"
     @State private var pinCode = ""
@@ -51,11 +52,18 @@ struct ContentView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(height: 72)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 10)
+                        .background(logoPlateBackground, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                                .strokeBorder(logoPlateBorder, lineWidth: 1)
+                        )
                     HStack(spacing: 12) {
                         Label(serial.isConnected ? L10n.t("device_connected") : L10n.t("no_device_connected"), systemImage: serial.isConnected ? "bolt.horizontal.circle.fill" : "bolt.horizontal.circle")
-                            .foregroundStyle(serial.isConnected ? .green : .secondary)
+                            .foregroundStyle(serial.isConnected ? liveAccentColor : .secondary)
                         Label(L10n.f("audio_input_permission_format", L10n.permissionStatus(serial.microphonePermissionStatus)), systemImage: "mic")
-                            .foregroundStyle(serial.microphonePermissionStatus == "Granted" ? .green : .secondary)
+                            .foregroundStyle(serial.microphonePermissionStatus == "Granted" ? liveAccentColor : .secondary)
                     }
                 }
                 Spacer()
@@ -81,7 +89,7 @@ struct ContentView: View {
                         .foregroundStyle(.secondary)
                 } else {
                     Label(L10n.audioStatus(serial.audioLoopStatus), systemImage: "waveform")
-                        .foregroundStyle(.green)
+                        .foregroundStyle(liveAccentColor)
                 }
             }
         }
@@ -124,7 +132,7 @@ struct ContentView: View {
                             statusChip(L10n.t("sync"), color: .blue)
                         }
                         if broadcast.streaming {
-                            statusChip(L10n.t("live"), color: .green)
+                            statusChip(L10n.t("live"), color: liveAccentColor)
                         }
                     }
                     .padding(14)
@@ -389,10 +397,28 @@ struct ContentView: View {
         case .scanning, .syncing:
             return .blue
         case .streaming:
-            return .green
+            return liveAccentColor
         case .pinRequest:
             return .orange
         }
+    }
+
+    private var liveAccentColor: Color {
+        appLiveAccentColor(for: colorScheme)
+    }
+
+    private var logoPlateBackground: Color {
+        if colorScheme == .dark {
+            return Color.white.opacity(0.05)
+        }
+        return Color(nsColor: NSColor(calibratedRed: 0.18, green: 0.39, blue: 0.76, alpha: 0.95))
+    }
+
+    private var logoPlateBorder: Color {
+        if colorScheme == .dark {
+            return Color.white.opacity(0.10)
+        }
+        return Color(nsColor: NSColor(calibratedRed: 0.10, green: 0.25, blue: 0.52, alpha: 0.35))
     }
 
     private func statusForBroadcast(_ broadcast: Broadcast) -> BAStatus? {
@@ -492,10 +518,10 @@ private func broadcastIcon(for broadcast: Broadcast, currentStatus: BAStatus?) -
     if let currentStatus, currentStatus.broadcastId == broadcast.broadcastId {
         if currentStatus.bisSync != 0 {
             if broadcast.isAnnouncement {
-                AnnouncementIcon(state: .live, color: .green)
+                AnnouncementIcon(state: .live, color: appLiveAccentColor(for: currentMacColorScheme()))
             } else {
                 Image(systemName: "music.note")
-                    .foregroundStyle(.green)
+                    .foregroundStyle(appLiveAccentColor(for: currentMacColorScheme()))
             }
         } else if currentStatus.paSync == 2 {
             if broadcast.isAnnouncement {
@@ -506,10 +532,10 @@ private func broadcastIcon(for broadcast: Broadcast, currentStatus: BAStatus?) -
         }
     } else if broadcast.streaming {
         if broadcast.isAnnouncement {
-            AnnouncementIcon(state: .live, color: .green)
+            AnnouncementIcon(state: .live, color: appLiveAccentColor(for: currentMacColorScheme()))
         } else {
             Image(systemName: "music.note")
-                .foregroundStyle(.green)
+                .foregroundStyle(appLiveAccentColor(for: currentMacColorScheme()))
         }
     } else if broadcast.isSyncing {
         if broadcast.isAnnouncement {
@@ -518,6 +544,18 @@ private func broadcastIcon(for broadcast: Broadcast, currentStatus: BAStatus?) -
     } else if broadcast.isAnnouncement {
         AnnouncementIcon(state: .idle, color: .blue)
     }
+}
+
+private func appLiveAccentColor(for colorScheme: ColorScheme) -> Color {
+    if colorScheme == .dark {
+        return .green
+    }
+    return Color(nsColor: NSColor(calibratedRed: 0.07, green: 0.46, blue: 0.24, alpha: 1.0))
+}
+
+private func currentMacColorScheme() -> ColorScheme {
+    let appearance = NSApp.effectiveAppearance.bestMatch(from: [.darkAqua, .aqua])
+    return appearance == .darkAqua ? .dark : .light
 }
 
 private func displayName(for broadcast: Broadcast) -> String {
